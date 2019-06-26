@@ -1,5 +1,5 @@
 {
-  "name": "@storybook/ember-cli-storybook",
+  "name": "ember-cli-storybook",
   "version": "0.1.0",
   "description": "📒 Ember storybook adapter",
   "keywords": [
@@ -64,5 +64,9 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "ember-cli-babel": "^7.1.2"
+  },
+  "volta": {
+    "node": "10.15.1",
+    "yarn": "1.13.0"
   }
 }
