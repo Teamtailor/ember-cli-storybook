@@ -40,6 +40,18 @@ module.exports = {
     }
 
     const parsedConfig = parse(fileContents, ignoreTestFiles);
+    const metaConfigEnvironment = parsedConfig.meta.find((tags)=>{
+      return tags.name.indexOf('/config/environment') >= 0;
+    });
+    const metaConfigEnvironmentIndex = parsedConfig.meta.indexOf(metaConfigEnvironment);
+    let metaConfigEnvironmentContent = JSON.parse(decodeURIComponent(metaConfigEnvironment.content));
+
+    if (metaConfigEnvironmentContent.storybookEnvironment) {
+      metaConfigEnvironmentContent = Object.assign(metaConfigEnvironmentContent, metaConfigEnvironmentContent.storybookEnvironment)
+      delete metaConfigEnvironmentContent.storybookEnvironment
+      metaConfigEnvironment.content = encodeURIComponent(JSON.stringify(metaConfigEnvironmentContent));
+      parsedConfig.meta[metaConfigEnvironmentIndex] = metaConfigEnvironment;
+    }
 
     this.ui.writeLine('Generating preview-head.html');
 
