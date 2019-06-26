@@ -116,6 +116,13 @@ function generatePreviewHead(parsedConfig) {
     }
   }
 
+  doc.push('<div id="ember-teamtailor-redactor-giphy"></div>');
+  doc.push('<div id="ember-teamtailor-redactor-media-library"></div>');
+  doc.push('<div id="ember-teamtailor-media-library"></div>');
+  doc.push('<div id="ember-teamtailor-takeover"></div>');
+  doc.push('<div id="ember-teamtailor-modal"></div>');
+  doc.push('<div id="ember-basic-dropdown-wormhole"></div>');
+
   return doc.join('\n')
 }
 
